@@ -37,15 +37,22 @@ const generatedCountryCodes = require('./countries.json')
 // This allows us to easily check if a given phone number starts with
 // one of these calling codes, and what that calling code would be.
 
-const countries = {}
+const callingCodes = (codes = generatedCountryCodes) => {
+  const countries = {}
 
-for (const country of generatedCountryCodes) {
-  for (const callingCode of country.callingCodes) {
-    countries[callingCode] = {
-      countryCode: country.cca2,
-      prefix: country.idd.root,
+  for (const country of codes) {
+    for (const callingCode of country.callingCodes) {
+      const info = country.idd
+      const prefix = info.suffixes.length > 1 ? info.root : "".concat(info.root, info.suffixes[0])
+
+      countries[callingCode] = {
+        countryCode: country.cca2,
+        prefix,
+      }
     }
   }
+
+  return countries
 }
 
-module.exports = countries
+module.exports = callingCodes
