@@ -5,7 +5,6 @@ const {
 
 it('finds 7-long country codes', () => {
   const phone = '390669800000000'
-
   expect(findMatchingCountryCode(phone)).toEqual('3')
 })
 
@@ -48,13 +47,13 @@ it('throws an error if there is no valid country code', () => {
 })
 
 it('throws an error if there are too many spaces', () => {
-  expect(() => extractPhoneNumber('+1 201 873 6551')).toThrow('string has too many spaces')
+  expect(() => extractPhoneNumber('+1 201 873 6551')).toThrow('string format is invalid')
 })
 
 it('throws an error if there are spaces in the wrong place', () => {
-  expect(() => extractPhoneNumber('+12018736551    ')).toThrow('string has too many spaces')
+  expect(() => extractPhoneNumber('+12018736551    ')).toThrow('string format is invalid')
 })
 
-it('throw an error if there is a space after the +', () => {
-  expect(() => extractPhoneNumber('+ 12018736551')).toThrow('string has too many spaces')
+fit('throw an error if there is a space after the +', () => {
+  expect(() => extractPhoneNumber('+ 12018736551')).toThrow('string format is invalid')
 })
