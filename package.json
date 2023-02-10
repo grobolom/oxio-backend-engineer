@@ -13,7 +13,7 @@
   },
   "scripts": {
     "server": "nodemon index",
-    "generate-countries": "node src/lib/generateCountryCodes.js",
+    "generate-countries": "node src/lib/countries/generateCountryCodes.js",
     "test": "jest"
   }
 }
